@@ -76,9 +76,10 @@ class App extends GetView<BottomNavController> {
           ),
         ),
       ),
-      onWillPop: () async {
-        return false; //뒤로가기 버튼 눌러도 앱 종료 x / true 설정 시 뒤로가기 버튼 클릭하면 앱 종료
-      },
+      // onWillPop: () async {
+      //   return false; //뒤로가기 버튼 눌러도 앱 종료 x / true 설정 시 뒤로가기 버튼 클릭하면 앱 종료
+      // },
+      onWillPop: controller.willPopAction,
     );
   }
 }
