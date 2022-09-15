@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clone_instagram/src/components/avatar_widget.dart';
 import 'package:flutter_clone_instagram/src/components/image_data.dart';
 
 class Home extends StatelessWidget {
@@ -9,14 +10,12 @@ class Home extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: List.generate(
-          100,
-          (index) => Container(
-            width: 50,
-            height: 50,
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
-          ),
-        ),
+            100,
+            (index) => AvatarWidget(
+                  thumbPath:
+                      'https://static.vecteezy.com/packs/media/vectors/term-bg-1-666de2d9.jpg',
+                  type: AvatarType.TYPE1,
+                )),
       ),
     );
   }
