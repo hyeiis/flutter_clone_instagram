@@ -38,6 +38,7 @@ dependencies:
   expandable_text: ^2.3.0
   timeago: ^3.3.0
   cloud_firestore: ^3.4.8
+  quiver: ^3.1.0
 
 dev_dependencies:
   flutter_test:
