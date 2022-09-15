@@ -11,13 +11,13 @@ class AvatarWidget extends StatelessWidget {
   double? size;
 
   AvatarWidget({
-    super.key,
-    this.hasStory,
-    required this.thumbPath,
-    this.nickname,
+    Key? key,
     required this.type,
-    this.size,
-  });
+    required this.thumbPath,
+    this.hasStory,
+    this.nickname,
+    this.size = 60,
+  }) : super(key: key);
 
   Widget type1Widget() {
     return Container(
@@ -34,24 +34,43 @@ class AvatarWidget extends StatelessWidget {
         ),
         shape: BoxShape.circle,
       ),
-      child: Container(
-        padding: const EdgeInsets.all(2),
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(65),
-          child: Container(
-            width: 65,
-            height: 65,
-            child: CachedNetworkImage(
-              imageUrl: thumbPath,
-              fit: BoxFit.cover,
-            ),
+      child: type2Widget(),
+    );
+  }
+
+  Widget type2Widget() {
+    return Container(
+      padding: const EdgeInsets.all(2),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(size!),
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: CachedNetworkImage(
+            imageUrl: thumbPath,
+            fit: BoxFit.cover,
           ),
         ),
       ),
+    );
+  }
+
+  Widget type3Widget() {
+    return Row(
+      children: [
+        type1Widget(),
+        Text(
+          nickname ?? '',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+      ],
     );
   }
 
@@ -61,10 +80,9 @@ class AvatarWidget extends StatelessWidget {
       case AvatarType.TYPE1:
         return type1Widget();
       case AvatarType.TYPE2:
-      // return type2Widget();
+        return type2Widget();
       case AvatarType.TYPE3:
-        // return type3Widget();
-        return Container();
+        return type3Widget();
     }
   }
 }
