@@ -11,6 +11,8 @@ class Home extends StatelessWidget {
         children: List.generate(
           100,
           (index) => Container(
+            width: 50,
+            height: 50,
             decoration:
                 BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
           ),
